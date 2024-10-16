@@ -34,4 +34,7 @@ def crear_pokemon(request):
     
     return render(request, 'inicio/crear_pokemon.html', {'form': formulario})
 
+def about_me(request):
+    return render(request, 'inicio/about_me.html')
+
     
