@@ -1,0 +1,32 @@
+{% extends "inicio/index.html" %}
+{% load static %}
+
+{% block title_head %}
+Buscar Pokémon
+{% endblock title_head %}
+
+{% block h1_header %}
+Buscar Pokémon
+{% endblock h1_header %}
+
+{% block h3_header %}
+Buscar por nombre o tipo
+{% endblock h3_header %}
+
+{% block main %}
+<form action={% url "inicio:buscar_pokemon" %}>
+    {{form}}
+    <input type="submit">
+</form>
+
+{% if pokemons %}
+<ul>
+    {% for pokemon in pokemons %}
+    <li>{{pokemon}}</li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No hay autos registrados.</p>
+{% endif %}
+
+{% endblock main %}
