@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title_head %}
+Perfil
+{% endblock title_head %}
+
+{% block h1_header %}
+Hola {{user.username}}
+{% endblock h1_header %}
+
+{% block main %}
+{% comment %} <form action={% url "inicio:buscar_auto" %}>
+    {{form}}
+    <input type="submit">
+</form> {% endcomment %}
+
+<h2>Información del Perfil</h2>
+<p><strong>Nombre:</strong> {{ datos_extra.first_name }}</p>
+<p><strong>Apellido:</strong> {{ datos_extra.last_name }}</p>
+<p><strong>Genero:</strong> {{ datos_extra.get_gender_display }}</p>
+<p><strong>Email:</strong> {{ user.email }}</p>
+<p><strong>Avatar:</strong> 
+{% if datos_extra.avatar %}
+    <img src="{{ datos_extra.avatar.url }}" alt="Avatar" height="100px">
+{% else %}
+    <img src="/path/to/default/avatar.png" alt="Avatar" height="100px">
+{% endif %}
+</p>
+
+<p><a href="{% url "usuarios:editar_perfil" %}">Editar Perfil</a></p>
+
+{% endblock main %}

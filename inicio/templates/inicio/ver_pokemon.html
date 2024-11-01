@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title_head %}
+Ver Pokemon
+{% endblock title_head %}
+
+{% block h1_header %}
+{{pokemon}}
+{% endblock h1_header %}
+
+{% block main %}
+
+<ul>
+    <li><strong>Nombre: </strong>{{pokemon.nombre}}</li>
+    <li><strong>Tipo:</strong> {{pokemon.tipo}}</li>
+    <li><strong>Nivel:</strong> {{pokemon.nivel}}</li>
+    <li><strong>Fecha de Captura:</strong> {{pokemon.fecha}}</li>
+    <li>
+        {% if pokemon.imagen %}
+            <img src="{{ pokemon.imagen.url }}" alt="{{ pokemon.nombre }}" height= "200px">
+        {% else %}
+            No hay imagen disponible.
+        {% endif %}
+    </li>
+    <p><a href="{% url "inicio:buscar_pokemon" %}">Volver</a></p>
+</ul>
+
+{% endblock main %}

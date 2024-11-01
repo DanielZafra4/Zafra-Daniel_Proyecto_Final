@@ -14,7 +14,7 @@ Diligencie el pokémon que desea crear
 {% endblock h3_header %}
 
 {% block main %}
-<form action={% url "inicio:crear_pokemon" %} method="POST">
+<form action={% url "inicio:crear_pokemon" %} method="POST"  enctype="multipart/form-data">
     {% csrf_token %}
 
     

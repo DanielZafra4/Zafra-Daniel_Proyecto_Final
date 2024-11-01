@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title_head %}
+Editar Pokémon
+{% endblock title_head %}
+
+{% block h1_header %}
+Editar {{pokemon}}
+{% endblock h1_header %}
+
+{% block main %}
+<form action={% url "inicio:editar_pokemon" pokemon.id %} method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {{form.as_p}}
+
+    <div>
+        <label for="id_clear_imagen">Borrar imagen existente:</label>
+        <input type="checkbox" name="clear_imagen" id="id_clear_imagen">
+    </div>
+
+    <input type="submit" value="Editar">
+</form>
+
+{% endblock main %}

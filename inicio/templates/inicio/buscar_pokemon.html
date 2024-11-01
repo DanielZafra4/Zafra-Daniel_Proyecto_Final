@@ -1,5 +1,4 @@
-{% extends "inicio/index.html" %}
-{% load static %}
+{% extends "base.html" %}
 
 {% block title_head %}
 Buscar Pokémon
@@ -17,12 +16,16 @@ Buscar por nombre o tipo
 <form action={% url "inicio:buscar_pokemon" %}>
     {{form}}
     <input type="submit">
-</form>
-
+</form> 
+<a class="navbar-brand" href={% url "inicio:crear_pokemon" %}>Crear nuevo Pokemon</a>
 {% if pokemons %}
 <ul>
     {% for pokemon in pokemons %}
-    <li>{{pokemon}}</li>
+    <li>{{pokemon}}
+        | <a href={% url "inicio:ver_pokemon" pokemon.id %}>Ver más</a>
+        | <a href={% url "inicio:editar_pokemon" pokemon.id %}>Editar</a>
+        | <a href={% url "inicio:eliminar_pokemon" pokemon.id %}>Eliminar</a> 
+    </li>
     {% endfor %}
 </ul>
 {% else %}
