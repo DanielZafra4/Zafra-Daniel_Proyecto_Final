@@ -8,6 +8,9 @@ Perfil
 Hola {{user.username}}
 {% endblock h1_header %}
 
+{% block h3_header %}
+{% endblock h3_header %}
+
 {% block main %}
 {% comment %} <form action={% url "inicio:buscar_auto" %}>
     {{form}}
@@ -26,7 +29,8 @@ Hola {{user.username}}
     <img src="/path/to/default/avatar.png" alt="Avatar" height="100px">
 {% endif %}
 </p>
-
-<p><a href="{% url "usuarios:editar_perfil" %}">Editar Perfil</a></p>
+<p>
+    <a class="btn btn-primary btn-s rounded-pill mt-5" href={% url "usuarios:editar_perfil" %}>Editar Perfil</a>
+</p>
 
 {% endblock main %}

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import authenticate, login as django_login
+from django.contrib.auth import login as django_login
 from usuarios.models import DatosExtra
 from usuarios.forms import CrearUsuarioForm, EditarPerfilForm
 from django.contrib.auth.decorators import login_required
@@ -37,24 +37,13 @@ def mi_perfil(request):
     datos_extra = DatosExtra.objects.get(user=request.user)
     return render(request, 'usuarios/mi_perfil.html', {'user': request.user, 'datos_extra': datos_extra})
 
-# def editar_perfil(request):
-#     datos_extra = request.user.datosextra
-#     formulario = EditarPerfilForm(request.POST, request.FILES, instance=request.user)
-#     if formulario.is_valid():
-#         new_avatar = formulario.cleaned_data.get('avatar')
-#         datos_extra.avatar = new_avatar if new_avatar else datos_extra.avatar
-#         datos_extra.save()
-#         formulario.save()
-        
-#         return redirect('usuarios:mi_perfil')
-#     return render(request, 'usuarios/editar_perfil.html', {'form': formulario})
 
 def editar_perfil(request):
-    datos_extra = request.user.datosextra  # Obtener los datos extra del usuario
+    datos_extra = request.user.datosextra 
     if request.method == 'POST':
         formulario = EditarPerfilForm(request.POST, request.FILES, instance=request.user)  # Usar la instancia de User
         if formulario.is_valid():
-            formulario.save()  # Guarda los cambios en el User
+            formulario.save()  
             
             # Actualizar los datos extra
             datos_extra.first_name = formulario.cleaned_data.get('first_name', datos_extra.first_name)
@@ -63,11 +52,11 @@ def editar_perfil(request):
             new_avatar = formulario.cleaned_data.get('avatar')
             datos_extra.avatar = new_avatar if new_avatar else datos_extra.avatar
             
-            datos_extra.save()  # Guarda los cambios en DatosExtra
+            datos_extra.save()  
             
-            return redirect('usuarios:mi_perfil')  # Redirige a la vista de perfil después de guardar
+            return redirect('usuarios:mi_perfil')  
     else:
-        formulario = EditarPerfilForm(instance=request.user)  # Muestra el formulario con los datos actuales
+        formulario = EditarPerfilForm(instance=request.user)  
         
     return render(request, 'usuarios/editar_perfil.html', {'form': formulario})
 

@@ -37,7 +37,7 @@ class CrearPokemon(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
     
 
-class VerPokemon(LoginRequiredMixin, DetailView):
+class VerPokemon(DetailView):
     model = Pokemon
     template_name = "inicio/ver_pokemon.html"
     

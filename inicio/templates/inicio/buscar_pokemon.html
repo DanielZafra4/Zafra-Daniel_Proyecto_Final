@@ -17,7 +17,7 @@ Buscar por nombre o tipo
     {{form}}
     <input type="submit">
 </form> 
-<a class="navbar-brand" href={% url "inicio:crear_pokemon" %}>Crear nuevo Pokemon</a>
+
 {% if pokemons %}
 <ul>
     {% for pokemon in pokemons %}
@@ -31,5 +31,5 @@ Buscar por nombre o tipo
 {% else %}
 <p>No hay datos registrados con esta información</p>
 {% endif %}
-
+<a href="{% url "inicio:crear_pokemon" %}">Crear nuevo Pokemon</a>
 {% endblock main %}

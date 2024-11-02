@@ -6,6 +6,9 @@ Editar Perfil
 Editando perfil de {{request.user.username}}
 {% endblock h1_header %}
 
+{% block h3_header %}
+{% endblock h3_header %}
+
 {% block main %}
 <form action={% url "usuarios:editar_perfil" %} method="POST" enctype='multipart/form-data'>
     {% csrf_token %}
@@ -18,7 +21,8 @@ Editando perfil de {{request.user.username}}
 </form>
 
 <p>
-    <a href="{% url "usuarios:cambiar_password" %}">Cambiar contraseña</a>
+    <a class="btn btn-primary btn-s rounded-pill mt-5" href={% url "usuarios:cambiar_password" %}>Cambiar contraseña</a>
 </p>
+
 
 {% endblock main %}

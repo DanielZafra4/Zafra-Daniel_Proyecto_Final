@@ -1,13 +1,16 @@
 {% extends "base.html" %}
 
-{% block title_head %}
-Pokemon
-{% endblock title_head %}
-
 {% block h1_header %}
-Bienvenido a la pantalla de inicio
+Bienvenidos 
+
 {% endblock h1_header %}
 
 {% block h3_header %}
-Clase python
+<p>Clase python CoderHouse</p>
+<p>
+    <a class="btn btn-primary btn-s rounded-pill mt-5" href={% url "inicio:about_me" %}>
+    Acerca de mi
+</a></p>
 {% endblock h3_header %}
+
+
